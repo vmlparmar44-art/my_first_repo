@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "39b99cdf8d1802d94bc1",
+  "position": {
+    "x": 653.43832020997377,
+    "y": 164.61942257217848,
+    "z": 1,
+    "height": 428.34645669291336,
+    "width": 552.65091863517057,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "supermarket_sale"
+                    }
+                  },
+                  "Property": "Gender"
+                }
+              },
+              "queryRef": "supermarket_sale.Gender",
+              "nativeQueryRef": "Gender",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "supermarket_sale"
+                        }
+                      },
+                      "Property": "Unit price"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(supermarket_sale.Unit price)",
+              "nativeQueryRef": "Sum of Unit price"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "supermarket_sale"
+                      }
+                    },
+                    "Property": "Unit price"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c72df27fbd3ba360f919",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "supermarket_sale"
+                  }
+                },
+                "Property": "Unit price"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7f03576992abb84c85e7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "supermarket_sale"
+              }
+            },
+            "Property": "Gender"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
