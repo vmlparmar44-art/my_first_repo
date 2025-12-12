@@ -1,0 +1,94 @@
+table supermarket_sale
+	lineageTag: 11c6f491-fe3f-4098-a79d-f6bd2c59a128
+
+	column Gender
+		dataType: string
+		lineageTag: cbbb1b5b-48e9-4e3f-bff0-384fc9b9684f
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice ID'
+		dataType: string
+		lineageTag: 3e7ec65a-7a6e-4226-92ad-848773549be6
+		summarizeBy: none
+		sourceColumn: Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Branch
+		dataType: string
+		lineageTag: 45b1d57c-3999-40b9-961e-ecbec4fc7f18
+		summarizeBy: none
+		sourceColumn: Branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: aeac9a11-de94-44cc-80ac-a92f046310e5
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer type'
+		dataType: string
+		lineageTag: ecaa5b24-cf15-49a7-9e4c-9dd1920d7971
+		summarizeBy: none
+		sourceColumn: Customer type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product line'
+		dataType: string
+		lineageTag: 7323e4b7-d8e0-4fc8-9fb7-368fa8e67a1d
+		summarizeBy: none
+		sourceColumn: Product line
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit price'
+		dataType: double
+		lineageTag: 6fa463af-fc52-401d-8974-fa15278adb57
+		summarizeBy: sum
+		sourceColumn: Unit price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 27d7a731-dcd2-41be-9057-d5b0a8fbc1fc
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax 5%'
+		dataType: double
+		lineageTag: bbd879ea-8e97-4d94-941d-339445701553
+		summarizeBy: sum
+		sourceColumn: Tax 5%
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition supermarket_sale = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Vimal\Downloads\supermarket_sales new.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Gender", type text}, {"Invoice ID", type text}, {"Branch", type text}, {"City", type text}, {"Customer type", type text}, {"Product line", type text}, {"Unit price", type number}, {"Quantity", Int64.Type}, {"Tax 5%", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

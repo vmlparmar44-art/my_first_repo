@@ -1,0 +1,188 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "791fe4be7001c8494aae",
+  "position": {
+    "x": 225.09186351706035,
+    "y": 147.82152230971127,
+    "z": 0,
+    "height": 423.30708661417322,
+    "width": 529.1338582677165,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "supermarket_sale"
+                    }
+                  },
+                  "Property": "Customer type"
+                }
+              },
+              "queryRef": "supermarket_sale.Customer type",
+              "nativeQueryRef": "Customer type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "supermarket_sale"
+                    }
+                  },
+                  "Property": "Branch"
+                }
+              },
+              "queryRef": "supermarket_sale.Branch",
+              "nativeQueryRef": "Branch"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "supermarket_sale"
+                    }
+                  },
+                  "Property": "City"
+                }
+              },
+              "queryRef": "supermarket_sale.City",
+              "nativeQueryRef": "City"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "supermarket_sale"
+                        }
+                      },
+                      "Property": "Quantity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(supermarket_sale.Quantity)",
+              "nativeQueryRef": "Sum of Quantity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "supermarket_sale"
+                        }
+                      },
+                      "Property": "Unit price"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(supermarket_sale.Unit price)",
+              "nativeQueryRef": "Sum of Unit price"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bf70fc906ee6a4a99c9a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "supermarket_sale"
+              }
+            },
+            "Property": "Branch"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e18636a489bd4df73ff6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "supermarket_sale"
+              }
+            },
+            "Property": "City"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7e786de445db2d943b67",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "supermarket_sale"
+                  }
+                },
+                "Property": "Quantity"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1d435432fe8917a08e4c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "supermarket_sale"
+                  }
+                },
+                "Property": "Unit price"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bb94d99c000cb0862a9c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "supermarket_sale"
+              }
+            },
+            "Property": "Customer type"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
